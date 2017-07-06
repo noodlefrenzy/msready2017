@@ -1,0 +1,91 @@
+name: ready
+channels:
+- r
+- defaults
+dependencies:
+- cycler=0.10.0=py36_0
+- icu=57.1=vc14_0
+- jpeg=9b=vc14_0
+- libpng=1.6.27=vc14_0
+- matplotlib=2.0.2=np113py36_0
+- mkl=2017.0.3=0
+- numpy=1.13.0=py36_0
+- openssl=1.0.2l=vc14_0
+- pandas=0.20.2=np113py36_0
+- pip=9.0.1=py36_1
+- pyparsing=2.1.4=py36_0
+- pyqt=5.6.0=py36_2
+- python=3.6.1=2
+- python-dateutil=2.6.0=py36_0
+- pytz=2017.2=py36_0
+- qt=5.6.2=vc14_5
+- scikit-learn=0.18.2=np113py36_0
+- scipy=0.19.1=np113py36_0
+- setuptools=27.2.0=py36_1
+- sip=4.18=py36_0
+- six=1.10.0=py36_0
+- tk=8.5.18=vc14_0
+- vs2015_runtime=14.0.25420=0
+- wheel=0.29.0=py36_0
+- zlib=1.2.8=vc14_3
+- pip:
+  - backports.weakref==1.0rc1
+  - bkcharts==0.2
+  - bleach==1.5.0
+  - bokeh==0.12.6
+  - certifi==2017.4.17
+  - chardet==3.0.4
+  - click==6.7
+  - cntk==2.0
+  - colorama==0.3.9
+  - dash==0.17.7
+  - decorator==4.0.11
+  - entrypoints==0.2.3
+  - flask==0.12.2
+  - flask-compress==1.4.0
+  - flask-seasurf==0.2.2
+  - html5lib==0.9999999
+  - idna==2.5
+  - ipykernel==4.6.1
+  - ipython==6.1.0
+  - ipython-genutils==0.2.0
+  - ipywidgets==6.0.0
+  - itsdangerous==0.24
+  - jedi==0.10.2
+  - jinja2==2.9.6
+  - jsonschema==2.6.0
+  - jupyter==1.0.0
+  - jupyter-client==5.1.0
+  - jupyter-console==5.1.0
+  - jupyter-core==4.3.0
+  - keras==2.0.5
+  - markdown==2.2.0
+  - markupsafe==1.0
+  - mistune==0.7.4
+  - nbconvert==5.2.1
+  - nbformat==4.3.0
+  - notebook==5.0.0
+  - olefile==0.44
+  - opencv-python==3.2.0+contrib
+  - pandocfilters==1.4.1
+  - pickleshare==0.7.4
+  - pillow==4.2.0
+  - plotly==2.0.11
+  - prompt-toolkit==1.0.14
+  - protobuf==3.3.0
+  - pygments==2.2.0
+  - pyyaml==3.12
+  - pyzmq==16.0.2
+  - qtconsole==4.3.0
+  - requests==2.18.1
+  - simplegeneric==0.8.1
+  - tensorflow-gpu==1.2.0
+  - testpath==0.3.1
+  - theano==0.9.0
+  - tornado==4.5.1
+  - traitlets==4.3.2
+  - urllib3==1.21.1
+  - wcwidth==0.1.7
+  - werkzeug==0.12.2
+  - widgetsnbextension==2.0.0
+
