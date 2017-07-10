@@ -30,4 +30,5 @@ def download_model_by_name(model_name):
     else:
         download_model(model_name, modelNameToUrl[model_name])
 
-download_model_by_name('ResNet_18.model')
+if __name__ == '__main__':
+    download_model_by_name('ResNet_18.model')
