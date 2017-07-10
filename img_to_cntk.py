@@ -30,19 +30,23 @@ def is_img(x):
         print('Failed to open {}'.format(x))
         return False
 
-images = pd.read_csv('./images/images.tsv', sep='\t')
-valid_images = images[images.Path.apply(lambda x: os.path.isfile(x) and is_img(x))]
-# Convert "hot dog" to 1, anything else to 0
-labels = np.array(valid_images['Label'] == 'hot dog', dtype=np.int)
+def split_images(imagelist_file, training_mapfile, testing_mapfile):
+    images = pd.read_csv(imagelist_file, sep='\t')
+    valid_images = images[images.Path.apply(lambda x: os.path.isfile(x) and is_img(x))]
+    # Convert "hot dog" to 1, anything else to 0
+    labels = np.array(valid_images['Label'] == 'hot dog', dtype=np.int)
 
-# Split the data into 70/30 for training and testing.
-# Use stratification to make sure that the "hot dog" class has roughly the
-#  same ratio of samples in the training and the test sets.
-X_train, X_test, y_train, y_test = train_test_split(labels, valid_images['Path'], 
-                                                    test_size=0.3, random_state=1337, stratify=labels)
+    # Split the data into 70/30 for training and testing.
+    # Use stratification to make sure that the "hot dog" class has roughly the
+    #  same ratio of samples in the training and the test sets.
+    X_train, X_test, y_train, y_test = train_test_split(labels, valid_images['Path'], 
+                                                        test_size=0.3, random_state=1337, stratify=labels)
 
-# Output the results to the tab-delimited format expected by CNTK
-train_df = pd.DataFrame(np.array([y_train, X_train]).T, columns=['path', 'label'])
-train_df.to_csv('./images/train.tsv', sep='\t', header=False, index=False)
-test_df = pd.DataFrame(np.array([y_test, X_test]).T, columns=['path', 'label'])
-test_df.to_csv('./images/test.tsv', sep='\t', header=False, index=False)
+    # Output the results to the tab-delimited format expected by CNTK
+    train_df = pd.DataFrame(np.array([y_train, X_train]).T, columns=['path', 'label'])
+    train_df.to_csv(training_mapfile, sep='\t', header=False, index=False)
+    test_df = pd.DataFrame(np.array([y_test, X_test]).T, columns=['path', 'label'])
+    test_df.to_csv(testing_mapfile, sep='\t', header=False, index=False)
+
+if __name__ == '__main__':
+    split_images('./images/images.tsv', './images/train.tsv', './images/test.tsv')

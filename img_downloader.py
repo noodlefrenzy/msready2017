@@ -54,12 +54,19 @@ def search_for_examples(root_loc, search_term, count=100):
     imgs_path = root_loc + '/' + dir_suffix
     return grab_images_to_dir(content_uris, imgs_path)
 
-root_dir = 'c:/dev/git_ws/msready2017/images'
-with open(root_dir + '/images.tsv', 'w') as img_tsv:
-    img_tsv.write('Label\tPath\tURL\n')
-    for term in ['hot dog', 'cat', 'dog', 'fish', 'pizza', 'omelet', 'eagle', 'boat']:
-        curresults = search_for_examples(root_dir, term)
-        for cururi, curpath in curresults:
-            img_tsv.write('{}\t{}\t{}\n'.format(term, curpath, cururi))
-        print('Downloaded all images for "{}", sleeping.'.format(term))
-        sleep(0.1)
+def grab_images_for_terms(root_loc, imagelist_file, terms):
+    with open(imagelist_file, 'w') as img_tsv:
+        img_tsv.write('Label\tPath\tURL\n')
+        for term in terms:
+            curresults = search_for_examples(root_loc, term)
+            for cururi, curpath in curresults:
+                img_tsv.write('{}\t{}\t{}\n'.format(term, curpath, cururi))
+            print('Downloaded all images for "{}", sleeping.'.format(term))
+            sleep(0.1)
+
+if __name__ == '__main__':
+    img_dir = os.path.abspath('./images')
+    if not os.path.exists(img_dir):
+        os.makedirs(img_dir)
+    grab_images_for_terms(img_dir, img_dir + '/images.tsv', 
+        ['hot dog', 'cat', 'dog', 'fish', 'pizza', 'omelet', 'eagle', 'boat'])
